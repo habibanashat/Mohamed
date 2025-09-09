@@ -1,0 +1,288 @@
+body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    background-attachment: fixed;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 20% 50%, rgba(255, 215, 0, 0.1), rgba(255, 0, 150, 0.05) 40%, rgba(0, 255, 255, 0.05) 60%, rgba(255, 0, 0, 0.1));
+    animation: bgMove 20s infinite linear;
+    z-index: -2;
+}
+
+@keyframes bgMove {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+    100% {
+        transform: translate(-10px, 10px) rotate(360deg);
+    }
+}
+
+body::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50"><circle cx="25" cy="25" r="2" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
+    animation: particle 10s infinite linear;
+    z-index: -1;
+}
+
+@keyframes particle {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+    50% {
+        transform: translate(50px, -50px) scale(1.2);
+    }
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.photo {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 20px auto;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    transition: transform 0.4s ease, filter 0.3s ease, box-shadow 0.3s ease;
+    animation: pulse 3s infinite ease-in-out;
+}
+
+@keyframes pulse {
+    0%,
+    100% {
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    }
+    50% {
+        box-shadow: 0 30px 60px rgba(0, 123, 255, 0.3);
+    }
+}
+
+.photo:hover {
+    transform: scale(1.15) rotate(5deg);
+    filter: brightness(1.2) contrast(1.2);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.7);
+}
+
+.name {
+    font-size: 3.5rem;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 30px;
+    text-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    animation: nameGlow 2s infinite alternate;
+}
+
+@keyframes nameGlow {
+    0% {
+        text-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    }
+    100% {
+        text-shadow: 0 5px 25px rgba(255, 255, 255, 0.5);
+    }
+}
+
+.name span {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.portfolio {
+    margin-top: 50px;
+    max-width: 100%;
+}
+
+.portfolio h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 40px;
+    text-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.portfolio-item {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    animation: itemFade 0.6s ease-in-out;
+}
+
+@keyframes itemFade {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.portfolio-item:hover {
+    transform: scale(1.05) rotate(2deg);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.portfolio-item img,
+h3,
+p {
+    margin: 10px;
+}
+
+.contact {
+    margin-top: 50px;
+    background: rgba(248, 249, 250, 0.9);
+    border-radius: 15px;
+    padding: 30px;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    animation: contactSlide 0.6s ease-in-out;
+}
+
+@keyframes contactSlide {
+    0% {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.contact h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.phone {
+    font-size: 1.5rem;
+    color: #007bff;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.btn,
+.whatsapp-btn {
+    background: #25D366;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    font-weight: bold;
+    font-size: 1rem;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn:hover,
+.whatsapp-btn:hover {
+    background: #1ebe57;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.translate-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    z-index: 10;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease;
+    animation: btnBounce 1s infinite ease-in-out;
+}
+
+@keyframes btnBounce {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+.translate-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+@media (max-width: 768px) {
+    .name {
+        font-size: 2.5rem;
+    }
+    .portfolio h2 {
+        font-size: 2rem;
+    }
+    .translate-btn {
+        top: 10px;
+        right: 10px;
+    }
+    .container {
+        padding: 20px;
+    }
+    .photo {
+        width: 200px;
+        height: 200px;
+    }
+}
+
+canvas {
+    display: none;
+}
